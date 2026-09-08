@@ -10,3 +10,7 @@ Téléchargez le fichier de la machine virtuelle [ici](https://drive.google.com/
 Téléchargez et installez également VirtualBox depuis [ce lien](https://drive.google.com/drive/folders/1hQFSbgWvjC_SEQYdGVW5yktB6FH0OLk4?usp=drive_link) (fichiers fournis pour Windows et Mac). Vous y trouverez également l'Extension Pack. Une fois VirtualBox installé, vous pourrez activer le pack dans le menu "Extensions" sur la gauche, via le bouton "Install".
 
 Ensuite, toujours dans VirtualBox, importez la machine via le menu "Fichier" > "Importer un appareil virtuel" et sélectionnez le fichier téléchargé. Vous pouvez ensuite démarrer la machine virtuelle.
+
+### Identifiants
+
+La VM possède un compte appelé `user` et le mot de passe est `pns` (faites attention aux majuscules/minuscules).
