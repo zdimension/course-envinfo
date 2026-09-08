@@ -31,7 +31,7 @@ De même, téraoctet (1 To) fait *exactement* $10^{12}$ octets alors qu'un tébi
 
 Pour induire en erreur le consommateur, les vendeurs de disques durs donnent systématiquement les unités en base 10 (kilo, méga, ...). Si un disque est annoncé comme ayant 1 To, quelle est sa capacité en unités binaires ?
 
-## Exercice 2 : questions de cours
+## Exercice 2 : fichiers, chemins et motifs
 
 ### Question 1
 
@@ -45,32 +45,12 @@ Qu'est-ce qu'un fichier texte *structuré* ? Donnez quelques exemples de formats
 > [!NOTE]
 > Si vous manquez d'idées de types de fichiers, baladez-vous par exemple dans /boot, /etc, C:\Windows, ou testez avec vos fichiers personnels !
 
+
 ### Question 2
-
-Que sont les *métadonnées* d'un fichier ? Donnez des exemples.
-
-Est-ce que les métadonnées d'un fichiers occupent de l'espace disque ?
-
-### Question 3
-
-Expliquez pourquoi les *données* d'un fichier de $n$ octets occupent en général strictement plus que $n$ octets sur son support de stockage.
-
-### Question 5
-
-Si les blocs du système de fichiers font 4 kio, quel est l'espace gaspillé (en pourcentage de la taille du fichier) sur un fichier de :
-
-- 1 octet,
-- 1 Kio + 1 octet,
-- 1 Mio + 1 octet,
-- 1 Gio + 1 octet ?
-
-## Exercice 3 : noms de fichiers, chemins et motifs
-
-### Question 1
 
 Qu'est-ce qu'un chemin d'accès ? Quelles différences y a t'il entre un chemin *absolu* et un chemin *relatif* ?
 
-### Question 2
+### Question 3
 
 Voici un morceau d'une arborescence de fichiers Unix : (`envinfo` est le répertoire courant)
 
@@ -111,7 +91,7 @@ flowchart TD
 
 Donnez des chemins absolus et relatifs pour accéder aux répertoires `OLD`, `tom`, `envinfo`, `vrZQOcf` et `tmp`.
 
-### Question 3
+### Question 4
 
 Pour chacun des motifs shell suivants, donnez la liste des fichiers correspondants dans l'arborescence ci dessus. (`envinfo` est le répertoire courant)
 
@@ -121,7 +101,7 @@ Pour chacun des motifs shell suivants, donnez la liste des fichiers correspondan
 | `*.?` | `*.*` |
 | `*[ch]` | `*/*?k` |
 
-## Exercice 4 : shell et composition (POSIX)
+## Exercice 3 : shell et composition (POSIX)
 
 *Rappels :*
 
@@ -202,3 +182,52 @@ Comment peut-on, à partir de cette commande et des commandes vues précédemmen
 - obtenir le nombre de fichiers dont la taille est supérieure à 1Kio,
 - obtenir le nombre de lignes contenant la chaîne `TODO` dans tous ces fichiers,
 - obtenir le nombre de fichiers de plus de 1Kio contenant la chaîne `TODO`.
+
+## Exercice 4 : GameShell
+
+Cette section a pour objectif de vous faire pratiquer l'usage du shell. Elle se base sur un "serious game" appelé GameShell, développé par Pierre Hyvernat de l'USMB.
+
+Rappels de vocabulaire :
+-  **terminal** : le programme **graphique** permettant d'exécuter d'autres programmes en ligne de commande (en mode texte, donc), et d'afficher leur sortie. Il est parfois appelé "console" ou "invite de commandes".
+-  **shell** : le programme interprétant les commandes tapées dans le terminal. Conceptuellement, un shell simple ressemble à :
+  ```py
+  while True:
+    commande = lire_une_commande()
+    executer(commande)
+  ``` 
+- **commande** : peut désigner un programme exécutable quelconque qui effectue une action, ou par abus de langage, l'action elle-même. Par exemple, `ls` est une commande qui permet d'afficher la liste des fichiers dans un répertoire. Mais on dira parfois que `ls -l bidule` est aussi une commande qui liste en format long les éléments du dossier `bidule`.
+
+Pour lancer GameShell, ouvrez un terminal (et mettez la fenêtre en plein écran), puis lancez :
+```sh
+$ sudo apt -y install gettext man-db procps psmisc nano tree ncal x11-apps wget
+$ wget https://github.com/phyver/GameShell/releases/download/latest/gameshell.sh
+$ bash gameshell.sh -L fr
+```
+
+> [!IMPORTANT]
+> Il ne faut **pas** recopier les `$`. Copiez chaque commande individuellement.
+>
+> La première commande (`sudo apt install ...`) vous demandera le mot de passe. C'est le mot de passe qui vous sert à vous connecter (`pns`). Quand vous le taperez, il ne **s'affichera pas** dans le terminal, c'est normal, c'est par sécurité !
+
+### Déroulement du jeu
+
+Vous allez maintenant devoir remplir un certain nombre de *missions* en utilisant le shell. Ces missions vous permettront de vous familiariser avec certaines commandes. Toutes les commandes que vous utiliserez seront des commandes standard du shell disponibles depuis n'importe quelle version de Linux. Les seules commandes spécifiques à ce TP sont celles qui commencent par le mot clé `gsh` :
+
+- `gsh goal` qui affiche l'objectif de la mission courante,
+- `gsh check` qui vérifie si votre mission courante est validée,
+- `gsh exit` qui sauvegarde votre avancement et quitte le jeu.
+
+La commande `gsh help` vous permet d'afficher cette liste de commandes, ainsi que quelques autres.
+
+Il est important de garder à l'esprit que les "missions" sont simplement des tâches que l'on rencontre couramment lors de l'utilisation d'un ordinateur :
+
+- créer des répertoires
+- créer des fichiers
+- chercher des fichiers selon des critères simples ou complexes
+- lancer ou arrêter d'autre programmes
+
+...
+
+Dans GameShell, les "objets" que vous rencontrerez sont simplement des fichiers standard (souvent avec un contenu aléatoire) et les "lieux" que vous visiterez sont simplement des répertoires. Ainsi, "construire une cabane" revient simplement à créer un répertoire, et "mettre les pièces dans le coffre" revient simplement à déplacer les fichiers "pièce" dans le répertoire "coffre".
+
+Pour cette première séance, le but est simplement que vous avanciez autant que possible dans les missions.
