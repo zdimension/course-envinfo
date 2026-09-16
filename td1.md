@@ -217,6 +217,8 @@ Vous allez maintenant devoir remplir un certain nombre de *missions* en utilisan
 - `gsh check` qui vérifie si votre mission courante est validée,
 - `gsh exit` qui sauvegarde votre avancement et quitte le jeu.
 
+Pour reprendre une partie déjà démarrée, lancez `bash gameshell.sh -L fr`, et prenez le choix `2`.
+
 La commande `gsh help` vous permet d'afficher cette liste de commandes, ainsi que quelques autres.
 
 Il est important de garder à l'esprit que les "missions" sont simplement des tâches que l'on rencontre couramment lors de l'utilisation d'un ordinateur :
